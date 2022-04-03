@@ -1,0 +1,19 @@
+{
+    "command": "bash",
+    "args": [
+        "-c"
+    ],
+    "tasks": [
+        {
+            "label": "CMake Build",
+            "args": [
+                "cmake -S . -B build && cd build && make && cd .."
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+    ],
+    "version": "2.0.0"
+}
