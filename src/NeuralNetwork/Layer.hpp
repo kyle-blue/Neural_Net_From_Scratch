@@ -1,7 +1,10 @@
 #pragma once
 
 #include "Neuron.hpp"
+#include "viennacl/matrix.hpp"
+#include "viennacl/vector.hpp"
 
+namespace vcl = viennacl;
 
 class Layer
 {
@@ -9,8 +12,8 @@ private:
     
 public:
     int numNeurons;
-    Matrix weightsMatrix;
-    Vector biasVector;
+    vcl::matrix<float> weightsMatrix;
+    vcl::vector<float> biasVector;
 
     Layer(/* args */);
     ~Layer();

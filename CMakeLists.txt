@@ -13,3 +13,7 @@ file(
 
 add_executable(${OUTFILE} ${SRC_FOLDER})
 
+target_link_libraries (
+    ${OUTFILE}
+    PUBLIC viennacl
+)
