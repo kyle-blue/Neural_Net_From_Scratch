@@ -2,12 +2,14 @@
 
 #include <vector>
 #include "Layer.hpp"
+#include <memory>
+
 
 class NeuralNetwork
 {
 private:
-    std::vector<Layer> layers;
 public:
-    NeuralNetwork(/* args */);
-    ~NeuralNetwork();
+    using LayerPointer = std::shared_ptr<Layer>;
+    std::vector<LayerPointer> layers;
+    NeuralNetwork(std::vector<int> layerNumbers);
 };

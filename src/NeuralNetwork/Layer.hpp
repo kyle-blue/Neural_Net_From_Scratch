@@ -6,6 +6,7 @@
 
 namespace vcl = viennacl;
 
+// Abstract Class
 class Layer
 {
 private:
@@ -13,10 +14,7 @@ private:
 public:
     int numNeurons;
     vcl::matrix<float> weightsMatrix;
-    vcl::vector<float> biasVector;
 
-    Layer(/* args */);
-    ~Layer();
-
+    Layer(int numNeurons): numNeurons(numNeurons) {}
     Neuron getNeuron(int neuronNumber);
 };

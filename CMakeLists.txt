@@ -13,7 +13,8 @@ file(
 
 add_executable(${OUTFILE} ${SRC_FOLDER})
 
-target_link_libraries (
-    ${OUTFILE}
-    PUBLIC viennacl
-)
+# Not needed, viennacl is a header only lib
+# target_link_libraries (
+#     ${OUTFILE}
+#     PUBLIC viennacl
+# )

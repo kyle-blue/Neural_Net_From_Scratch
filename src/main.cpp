@@ -2,7 +2,8 @@
 #include "NeuralNetwork/NeuralNetwork.hpp"
 
 int main() {
-    NeuralNetwork nn();
-    std::cout << "Hello World" << std::endl;
+    std::vector<int> layerNumbers = {256, 16, 16, 2};
+    NeuralNetwork ann(layerNumbers);
+    std::cout << "Hello World - " << ann.layers.size() << std::endl;
     return 0;
 }
