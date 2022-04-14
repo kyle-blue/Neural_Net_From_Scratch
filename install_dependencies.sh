@@ -36,7 +36,8 @@ echo "Installed CUDA Successfully"
 # Install X11
 echo "Installing X11, CMake and g++"
 sudo apt update
-sudo apt install -y libx11-dev xorg-dev libudev-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev libopengl-dev libglm-dev cmake g++ doxygen
+sudo apt-get build-dep build-essential
+sudo apt install -y libx11-dev libgl-dev xorg-dev libudev-dev libglu1-mesa-dev freeglut3-dev mesa-common-dev libopengl-dev libglm-dev cmake g++ doxygen
 echo "Installed X11, CMake and g++"
 
 # Install CMake Libraries
@@ -54,9 +55,9 @@ do
     cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/local ..
     sudo make all install
     cd ../../../
-    rm -rf temp
+    sudo rm -rf temp
     echo "Installed $folder Successfully"
 done
 
 cd ..
-rm -rf temp
+sudo rm -rf temp
