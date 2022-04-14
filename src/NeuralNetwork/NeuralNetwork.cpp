@@ -1,6 +1,7 @@
 #include "NeuralNetwork.hpp"
 #include "InputLayer.hpp"
 #include "DenseLayer.hpp"
+#include <iostream>
 
 NeuralNetwork::NeuralNetwork(std::vector<int> layerNumbers) {
     for (int i = 0; i < layerNumbers.size(); i++) {
@@ -12,5 +13,15 @@ NeuralNetwork::NeuralNetwork(std::vector<int> layerNumbers) {
             LayerPointer prevLayer = layers[i - 1];
             layers.push_back(std::make_shared<DenseLayer>(numNeurons, *prevLayer, activation));
         }
+    }
+}
+
+void NeuralNetwork::printWeights() {
+    for(LayerPointer layer: layers) {
+        auto denseLayer = dynamic_cast<DenseLayer*>(layer.get());
+        if (denseLayer != nullptr) {
+            denseLayer->printWeights();
+        }
+        std::cout << std::endl;
     }
 }

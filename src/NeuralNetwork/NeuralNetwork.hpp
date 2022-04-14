@@ -12,4 +12,6 @@ public:
     using LayerPointer = std::shared_ptr<Layer>;
     std::vector<LayerPointer> layers;
     NeuralNetwork(std::vector<int> layerNumbers);
+
+    void printWeights();
 };

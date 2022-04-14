@@ -13,8 +13,8 @@ private:
     
 public:
     int numNeurons;
-    vcl::matrix<float> weightsMatrix;
 
     Layer(int numNeurons): numNeurons(numNeurons) {}
-    Neuron getNeuron(int neuronNumber);
+    virtual Neuron getNeuron(int neuronNumber) {}
+    virtual ~Layer() {}
 };
