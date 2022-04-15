@@ -1,4 +1,5 @@
 #include "DenseLayer.hpp"
+#include "viennacl/linalg/prod.hpp"
 #include <vector>
 #include <random>
 #include <chrono>
@@ -54,3 +55,16 @@ void DenseLayer::printWeights() {
 }
 
 
+// Does Forward Prop
+vcl::vector<float> DenseLayer::getLayerOutput(vcl::vector<float> layerInputs) {
+    vcl::vector<float> product = vcl::linalg::prod(weightsMatrix, layerInputs);
+    vcl::vector<float> outputsNoActivation = product + biasVector;
+    std::vector<float> outputs(outputsNoActivation.size(), 0.0f);
+
+    for (int i = 0; i < outputs.size(); i++)
+        outputs[i] = activation.getOutput(outputsNoActivation(i));
+
+    vcl::vector<float> ret(outputs.size());
+    vcl::copy(outputs.begin(), outputs.end(), ret.begin());
+    return ret;
+}

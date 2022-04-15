@@ -12,6 +12,7 @@ public:
 
     DenseLayer(int numNeurons, Layer &prevLayer, Activation activation = Activation::RELU);
     void printWeights();
+    vcl::vector<float> getLayerOutput(vcl::vector<float> layerInputs);
     ~DenseLayer(){}
 private:
     Layer &prevLayer;

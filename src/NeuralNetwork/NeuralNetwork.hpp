@@ -14,4 +14,5 @@ public:
     NeuralNetwork(std::vector<int> layerNumbers);
 
     void printWeights();
+    vcl::vector<float> forwardProp(vcl::vector<float> inputs);
 };
