@@ -4,6 +4,7 @@
 #include <random>
 #include <chrono>
 #include <iostream>
+#include <ctime>
 #include <iomanip>
 
 DenseLayer::DenseLayer(int numNeurons, Layer &prevLayer, Activation activation):
@@ -24,17 +25,15 @@ void DenseLayer::initBiasVector() {
  * a variance of numInputs.
  */
 void DenseLayer::initWeightsMatrix() {
-    const float MEAN = 0;
-    
-    unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine randEngine(seed);
-    // std dev should be sqrt numNeurons to avoid vanishing or exploding gradient
-    // TODO: retrun to this for understanding
-    std::normal_distribution<float> norm{0, sqrt(prevLayer.numNeurons)};
-    
+    std::srand((unsigned int) std::time(nullptr));
+    const float UPPER_BOUND = sqrt(1 / prevLayer.numNeurons);
+    const float LOWER_BOUND = -sqrt(1 / prevLayer.numNeurons);
+    const float RANGE = UPPER_BOUND - LOWER_BOUND;
+
+
     for (int i = 0; i < numNeurons; i++) {
         for (int j = 0; j < prevLayer.numNeurons; j++) {
-            weightsMatrix(i, j) = norm(randEngine);
+            weightsMatrix(i, j) = (rand() / RAND_MAX * RANGE) + LOWER_BOUND;
         }
     }
 }
